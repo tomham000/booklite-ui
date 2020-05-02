@@ -31,6 +31,11 @@ module.exports = env => {
                 use: ['style-loader', 'css-loader', 'less-loader']
             },
 
+            {
+                test: /\.(css|scss)$/,
+                loaders: ['to-string-loader', 'css-loader', 'sass-loader']
+            },
+
             // workaround for warning: System.import() is deprecated and will be removed soon. Use import() instead.
             {
                 test: /[\/\\]@angular[\/\\].+\.js$/,
@@ -61,6 +66,6 @@ module.exports = env => {
     },
     devServer: {
         historyApiFallback: true
-    }
+    },
 }
 }

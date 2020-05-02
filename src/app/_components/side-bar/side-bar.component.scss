@@ -1,0 +1,134 @@
+@import '../../styles/colour-palette.scss';
+
+$side-bar-thickness: 3.5rem;
+
+/* The side navigation menu */
+.sidebar {
+  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    width: $side-bar-thickness;
+    background-color: $booklite-off-black;
+    position: fixed;
+    height: 100%;
+    z-index: 100;
+  }
+
+.side-menu {
+  margin-left: $side-bar-thickness;
+  position: absolute;
+  width:0%;
+  background-color: $booklite-light-yellow;
+  height: 100%;
+
+  transition: width 0.3s ease;
+  &.open {
+
+    width: 400px;
+    height:100%;
+  }
+  z-index: 50;
+}
+
+.page-dim {
+  width:100%;
+  height:100%;
+  position: absolute;
+  z-index: 49;
+  background-color: black;
+  transition: all 0.3s ease;
+  &.on{
+    opacity: 0.5;
+  }
+  &.off{
+    opacity:0;
+  }
+}
+
+.nav-button {
+
+  position: absolute;
+  border-radius: 50%;
+  border: 10px solid $booklite-off-black;
+  top: calc(50% - 60px);
+  background: $booklite-light-yellow;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;  
+}
+
+.fa {
+  position: absolute;
+  color: $booklite-off-black;
+  font-size: 3rem;
+  padding-left: 18px;
+  padding-top:16px;
+  transition: all 0.3s ease;
+  font-family: FontAwesome;
+
+}
+
+.fa-times {
+  :before {
+    content: "\f02d";
+  }
+  padding-left: 21px;
+}
+
+.fa-book {
+  :before {
+    content: "\f02d";
+  }
+}
+
+.visible {
+  opacity: 100%;
+}
+
+.invisible {
+  opacity: 0;
+}
+  
+  /* On screens that are less than 700px wide, make the sidebar into a topbar */
+  @media screen and (max-width: 700px) {
+    .sidebar {
+      bottom:0;
+      height: $side-bar-thickness;
+      width: 100%;
+      }
+
+      .side-menu {
+        margin-left: 0;
+        bottom: 0;
+        margin-bottom: $side-bar-thickness;
+        position: absolute;
+        height: 0px;
+        background-color: $booklite-light-yellow;
+        width: 100%;
+        transition: height 0.3s ease;
+        &.open {
+
+          height: 400px;
+          width: 100%;
+        }
+      }
+    
+      .nav-button {
+        left: calc(50% - 60px);
+        margin-top: -10px;
+      }
+  
+      
+  }
+  
+  /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+  @media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+  }
+
+  .stop-transitions {
+    transition: none !important;
+  }
